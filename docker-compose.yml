@@ -12,13 +12,6 @@ services:
     networks:
       - prom
 
-    blkio_config:
-      device_read_bps:
-        - path: /
-          rate: "5mb"
-      device_write_bps:
-        - path: /
-          rate: "1mb"
     deploy:
       resources:
         limits:
