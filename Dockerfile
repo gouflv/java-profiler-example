@@ -1,16 +1,16 @@
-# syntax=docker/dockerfile:1
-FROM maven:3.8-openjdk-8-slim
-# 
+FROM openjdk:8-oraclelinux7
+
 ENV APP_HOME=/app
 RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
 
+# Install dependencies
 COPY .mvn/ $APP_HOME/.mvn
-COPY mvnw pom.xml $APP_HOME/
+COPY mvnw pom.xml docker/maven/settings.xml $APP_HOME/
 
-RUN ./mvnw dependency:go-offline
+RUN ./mvnw -s settings.xml dependency:go-offline
 
-# 
-COPY src ./src
+# Build & Run
+COPY src $APP_HOME/src
 
 CMD ["./mvnw", "spring-boot:run"]

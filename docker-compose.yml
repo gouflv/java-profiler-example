@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    container_name: java-profiler
+    restart: unless-stopped
+
+    ports:
+      - "7658:8080"
+
+    networks:
+      - prom
+
+    blkio_config:
+      device_read_bps:
+        - path: /
+          rate: "5mb"
+      device_write_bps:
+        - path: /
+          rate: "1mb"
+    deploy:
+      resources:
+        limits:
+          cpus: 1
+          memory: 512M
+
+networks:
+  prom:
+    external: true
+    name: docker-prom_monitor-net
