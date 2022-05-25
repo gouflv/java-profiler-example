@@ -12,7 +12,7 @@ services:
     networks:
       - prom
 
-    volumns:
+    volumes:
       - /var/tmp/mock:/data
 
     deploy:
