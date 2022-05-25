@@ -13,4 +13,6 @@ RUN ./mvnw -s settings.xml dependency:go-offline
 # Build & Run
 COPY src $APP_HOME/src
 
-CMD ["./mvnw", "spring-boot:run"]
+CMD ["./mvnw", "package"]
+
+CMD ["java -jar ./target/profiler-0.0.1-SNAPSHOT.jar"]
