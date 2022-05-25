@@ -6,7 +6,7 @@ import java.io.InputStream;
 
 public class FileStream {
   public long readFile(String size) throws IOException {
-    String filePath = String.format("tmp/%mb.bin", size);
+    String filePath = String.format("tmp/%smb.bin", size);
 
     try (InputStream input = new FileInputStream(filePath)) {
       long count = 0;
