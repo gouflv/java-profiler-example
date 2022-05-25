@@ -10,8 +10,11 @@ COPY mvnw pom.xml docker/maven/settings.xml $APP_HOME/
 
 RUN ./mvnw -s settings.xml dependency:go-offline
 
+# Copy assets
+COPY tmp/ $APP_HOME/tmp 
+
 # Build & Run
-COPY src $APP_HOME/src
+COPY src/ $APP_HOME/src
 
 CMD ["./mvnw", "package"]
 
