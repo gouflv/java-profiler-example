@@ -10,12 +10,12 @@ COPY mvnw pom.xml docker/maven/settings.xml $APP_HOME/
 
 RUN ./mvnw -s settings.xml dependency:go-offline
 
+# Build
+COPY src/ $APP_HOME/src
+CMD ["./mvnw", "package"]
+
 # Copy assets
 COPY tmp/ $APP_HOME/tmp 
 
-# Build & Run
-COPY src/ $APP_HOME/src
-
-CMD ["./mvnw", "package"]
-
+# Run
 CMD ["java -jar ./target/profiler-0.0.1-SNAPSHOT.jar"]
