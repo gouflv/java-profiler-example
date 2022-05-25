@@ -12,6 +12,9 @@ services:
     networks:
       - prom
 
+    volumns:
+      - /var/tmp/mock:/data
+
     deploy:
       resources:
         limits:
