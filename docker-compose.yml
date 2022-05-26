@@ -2,6 +2,7 @@ version: "3"
 
 services:
   app:
+    image: java-profiler-app
     build:
       context: .
     container_name: java-profiler
