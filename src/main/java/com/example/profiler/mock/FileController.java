@@ -20,6 +20,17 @@ public class FileController {
     }
   }
 
+  @GetMapping("/file-stream2")
+  public String fileStream2(@RequestParam(defaultValue = "1") String s) {
+    FileStream fs = new FileStream();
+    try {
+      long size = fs.bufferedReadFile(s);
+      return String.valueOf(size);
+    } catch (IOException e) {
+      return "error";
+    }
+  }
+
   @GetMapping("/file-mmap")
   public String fileMemMap(@RequestParam(defaultValue = "1") String s) {
     FileMemMapping fmm = new FileMemMapping();

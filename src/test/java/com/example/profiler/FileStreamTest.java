@@ -15,7 +15,18 @@ public class FileStreamTest {
     FileStream fs = new FileStream();
     try {
       long size = fs.readFile("1");
-      System.out.print(size);
+      System.out.print("read1:" + size);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  @Test
+  void read2() {
+    FileStream fs = new FileStream();
+    try {
+      long count = fs.bufferedReadFile("10");
+      System.out.println("read2:" + count);
     } catch (IOException e) {
       e.printStackTrace();
     }
