@@ -16,18 +16,4 @@ public class FileStream {
       return count;
     }
   }
-
-  public long bufferedReadFile(String size) throws IOException {
-    String filePath = String.format("tmp/%smb.bin", size);
-
-    byte[] buff = new byte[100000]; // 100k
-
-    try (InputStream input = new FileInputStream(filePath)) {
-      long count = 0;
-      while (input.read(buff) != -1) {
-        count++;
-      }
-      return count;
-    }
-  }
 }

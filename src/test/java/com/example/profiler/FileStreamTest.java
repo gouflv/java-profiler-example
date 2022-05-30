@@ -21,14 +21,4 @@ public class FileStreamTest {
     }
   }
 
-  @Test
-  void read2() {
-    FileStream fs = new FileStream();
-    try {
-      long count = fs.bufferedReadFile("10");
-      System.out.println("read2:" + count);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
 }
