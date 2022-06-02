@@ -17,6 +17,7 @@ public class FileMemMapping {
 
       long count = 0;
       for (long i = 0; i < buff.limit(); i++) {
+        buff.get();
         count++;
       }
       return count;
